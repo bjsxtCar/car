@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.mapper.RolesMapper">
+  <resultMap id="roles" type="com.bjsxt.pojo.Roles">
+    <id column="roleid" property="roleId" />
+    <result column="rolename" property="roleName" />
+    <result column="isDelete" property="isDelete" typeHandler="com.bjsxt.typeHandler.IntegerToBooleanHandler" />
+  </resultMap>
+  <select id="getAllRoles" resultMap="roles">
+    select roleid,rolename,isDelete from roles;
+  </select>
+</mapper>
