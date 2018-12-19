@@ -13,6 +13,7 @@ import java.util.List;
 public class RoleController
 {
     private IRoleService iRoleService;
+    //setter注入
     @Autowired
     public void setiRoleService(IRoleService iRoleService)
     {
