@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.mapper.CustomersMapper">
+  <resultMap id="customers" type="com.bjsxt.pojo.Customers">
+    <id property="customerId" column="identity" />
+    <result property="customerName" column="custname" />
+    <result property="sex" column="sex"
+            javaType="com.bjsxt.pojo.enums.Sex"
+            jdbcType="VARCHAR"
+            typeHandler="com.bjsxt.typeHandler.SexTypeHandler" />
+    <result property="address" column="address" />
+    <result property="phone" column="phone" />
+    <result property="career" column="career" />
+    <result property="customerPwd" column="custpwd" />
+  </resultMap>
+
+  <sql id="customersAllFields">
+    identity,custname,sex,address,phone,career,custpwd
+  </sql>
+
+  <select id="getCustomerById" resultMap="customers">
+    select
+    <include refid="customersAllFields" />
+    from customers
+    where
+    identity = #{id}
+  </select>
+
+</mapper>
